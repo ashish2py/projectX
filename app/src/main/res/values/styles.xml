@@ -27,6 +27,8 @@
     <style name="TitleLogo" parent="FullScreenTheme">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">20dp</item>
     </style>
 
     <style name="BoxHeaderTitleText">
