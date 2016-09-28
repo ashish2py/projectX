@@ -50,7 +50,6 @@ public class LessonAdapter extends ArrayAdapter<Lesson> {
 
         Lesson lesson = data[position];
         holder.txtTitle.setText(lesson.title);
-        holder.imgIcon.setImageResource(lesson.icon);
 
         return row;
     }

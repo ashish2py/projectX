@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bg_darkpurple_box_border"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -64,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Star Bucks"
-                android:id="@+id/textView5"
+                android:id="@+id/lessonNameTextView"
                 android:layout_toRightOf="@+id/lessonIcon"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
@@ -107,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="2 Assessment"
-                    android:id="@+id/lessonNameTextView"
+                    android:id="@+id/lessonAssessmentCount"
                     android:layout_weight=".5" />
 
 
