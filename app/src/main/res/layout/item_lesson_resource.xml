@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@drawable/bg_darkpurple_box_border"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <TextView
+            style="@style/BoxHeaderTitleText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            style="@style/BoxContextText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="I want a movie coupon, come on to exchange."
+            android:id="@+id/contentText"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <RelativeLayout
+            android:id="@+id/box_flyer_container"
+            style="@style/BoxFlyerContainer"
+            android:background="@drawable/bg_white_box_border"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/contentText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+
+            <ImageView
+                android:src="@drawable/ic_notes"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/lessonIcon"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp" />
+
+
+            <TextView
+                style="@style/BoxFlyerContainerText"
+                android:fontFamily="sans-serif-thin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Star Bucks"
+                android:id="@+id/textView5"
+                android:layout_toRightOf="@+id/lessonIcon"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_below="@+id/box_flyer_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+
+            <LinearLayout
+                style="@style/BoxFlyerContainerFooter"
+                android:background="@color/colorLightDarkPurple"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+
+                <TextView
+                    style="@style/BoxFlyerContainerFooterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="1 Video"
+                    android:id="@+id/textView3"
+                    android:layout_weight=".5" />
+
+                <TextView
+                    style="@style/BoxFlyerContainerFooterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="2 Assessment"
+                    android:id="@+id/lessonNameTextView"
+                    android:layout_weight=".5" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
