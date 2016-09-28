@@ -10,54 +10,50 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dotorbit.projectell.R;
+import com.dotorbit.projectell.models.Assessment;
 import com.dotorbit.projectell.models.Lesson;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
 
 /**
  * Created by Ashish on 28/09/16.
  */
 public class LessonAdapter extends ArrayAdapter<Lesson> {
 
-    Context context;
-    int layoutResourceId;
-    Lesson data[] = null;
+    private final Context context;
+    private final int layoutResourceId;
+    private final List<Lesson> LessonData;
 
-    public LessonAdapter(Context context, int layoutResourceId, Lesson[] data) {
-        super(context, layoutResourceId, data);
+    public LessonAdapter(Context context, int layoutResourceId, List<Lesson> LessonData) {
+        super(context, layoutResourceId, LessonData);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
-        this.data = data;
+        this.LessonData = LessonData;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        LessonHolder holder = null;
 
         if(row == null)
         {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(R.layout.item_lesson_resource, null);
+            TextView txtLessonTitle = (TextView)row.findViewById(R.id.txtLessonTitle);
+            TextView txtLessonDescription = (TextView)row.findViewById(R.id.txtLessonDescription);
+            TextView txtAssessmentTitle = (TextView)row.findViewById(R.id.txtAssessmentTitle);
+            TextView txtQuestionCount = (TextView)row.findViewById(R.id.txtQuestionCount);
 
-            holder = new LessonHolder ();
-            holder.txtTitle = (TextView)row.findViewById(R.id.lessonNameTextView);
+            Lesson lesson = LessonData.get(position);
+            txtLessonTitle .setText(lesson.title);
+            txtLessonDescription .setText(lesson.description);
+            txtAssessmentTitle .setText(lesson.assessmentName);
+            txtQuestionCount.setText(lesson.assessmentQuestions.toString()+" Questions");
 
-            row.setTag(holder);
         }
-        else
-        {
-            holder = (LessonHolder )row.getTag();
-        }
-
-        Lesson lesson = data[position];
-        holder.txtTitle.setText(lesson.title);
-
         return row;
-    }
-
-    static class LessonHolder
-    {
-        ImageView imgIcon;
-        TextView txtTitle;
     }
 
 }

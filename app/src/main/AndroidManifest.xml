@@ -10,15 +10,19 @@
         android:theme="@style/ELLAppTheme">
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/FullScreenTheme"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".main.MainActivity" />
+        <activity
+            android:name=".study.AssessmentActivity"
+            android:label="@string/title_activity_assessment"
+            android:theme="@style/ELLAppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

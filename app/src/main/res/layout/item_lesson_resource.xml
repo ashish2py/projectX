@@ -14,24 +14,24 @@
 
 
         <TextView
+            android:id="@+id/txtLessonTitle"
             style="@style/BoxHeaderTitleText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView2"
+            android:text="@string/dot_dot_text"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:id="@+id/txtLessonDescription"
             style="@style/BoxContextText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="I want a movie coupon, come on to exchange."
-            android:id="@+id/contentText"
-            android:layout_below="@+id/textView2"
+            android:text="@string/dot_dot_text"
+            android:layout_below="@+id/txtLessonTitle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -42,7 +42,7 @@
             android:background="@drawable/bg_white_box_border"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_below="@+id/contentText"
+            android:layout_below="@+id/txtLessonDescription"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
 
@@ -51,7 +51,7 @@
                 android:src="@drawable/ic_notes"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/lessonIcon"
+                android:id="@+id/icnAssessment"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
@@ -65,8 +65,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Star Bucks"
-                android:id="@+id/lessonNameTextView"
-                android:layout_toRightOf="@+id/lessonIcon"
+                android:id="@+id/txtAssessmentTitle"
+                android:layout_toRightOf="@+id/icnAssessment"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="30dp" />
@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="1 Video"
+                    android:text="0 Video"
                     android:id="@+id/textView3"
                     android:layout_weight=".5" />
 
@@ -107,8 +107,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="2 Assessment"
-                    android:id="@+id/lessonAssessmentCount"
+                    android:text="0"
+                    android:id="@+id/txtQuestionCount"
                     android:layout_weight=".5" />
 
 
