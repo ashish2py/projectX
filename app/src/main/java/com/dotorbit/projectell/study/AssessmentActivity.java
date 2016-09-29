@@ -14,8 +14,11 @@ import android.widget.ImageView;
 import com.dotorbit.projectell.R;
 import com.dotorbit.projectell.fragments.AssessmentFragment;
 import com.dotorbit.projectell.main.MainActivity;
+import com.dotorbit.projectell.models.Lesson;
+import com.dotorbit.projectell.models.Question;
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import github.chenupt.multiplemodel.viewpager.ModelPagerAdapter;
@@ -27,6 +30,8 @@ public class AssessmentActivity extends AppCompatActivity {
 
     ScrollerViewPager viewPager;
     ImageView imgSuccessBtn;
+    Question question = new Question();
+    List<String> questionIds = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,7 @@ public class AssessmentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         PagerModelManager manager = new PagerModelManager();
-        manager.addCommonFragment(AssessmentFragment.class, getBgRes(), getTitles());
+        manager.addCommonFragment(AssessmentFragment.class, getBgRes(), getQuestionList());
         ModelPagerAdapter adapter = new ModelPagerAdapter(getSupportFragmentManager(), manager);
         viewPager.setAdapter(adapter);
         viewPager.fixScrollSpeed();
@@ -73,6 +78,12 @@ public class AssessmentActivity extends AppCompatActivity {
                 "Do you like chocolate cake?",
                 "Do you like banana?"
                 );
+    }
+
+
+    private List<String> getQuestionList(){
+        questionIds = question.getQuestionIDs();
+        return questionIds;
     }
 
     @Override
