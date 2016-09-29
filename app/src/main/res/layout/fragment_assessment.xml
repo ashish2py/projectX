@@ -48,7 +48,74 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
                 <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_white_box_border">
+
+                    <TextView
+                        style="@style/QuestionAnswerTxt"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/strYes"
+                        android:id="@+id/txtOptionTwo"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_white_box_border">
+
+                    <TextView
+                        style="@style/QuestionAnswerTxt"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/strNo"
+                        android:id="@+id/txtOptionThree"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_white_box_border"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/QuestionAnswerTxt"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/strDummyQuestionAnswer"
+                        android:id="@+id/txtOptionFour"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
@@ -70,68 +137,6 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_white_box_border">
-
-                    <TextView
-                        style="@style/QuestionAnswerTxt"
-                        android:fontFamily="sans-serif-thin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/strDummyQuestionAnswer"
-                        android:id="@+id/txtOptionTwo"
-                        android:gravity="center"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_white_box_border">
-
-                    <TextView
-                        style="@style/QuestionAnswerTxt"
-                        android:fontFamily="sans-serif-thin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/strDummyQuestionAnswer"
-                        android:id="@+id/txtOptionThree"
-                        android:gravity="center"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_white_box_border">
-
-                    <TextView
-                        style="@style/QuestionAnswerTxt"
-                        android:fontFamily="sans-serif-thin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/strDummyQuestionAnswer"
-                        android:id="@+id/txtOptionFour"
-                        android:gravity="center"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                </RelativeLayout>
 
         </LinearLayout>
 

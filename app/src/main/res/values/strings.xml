@@ -7,6 +7,8 @@
     <string name="strSubmit">OK</string>
     <string name="strDummyQuestion">Question Goes Here Silently.</string>
     <string name="strDummyQuestionAnswer">Answer Goes Here.</string>
+    <string name="strYes">Yes</string>
+    <string name="strNo">No</string>
 
 
 </resources>

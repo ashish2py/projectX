@@ -47,21 +47,32 @@ public class AssessmentActivity extends AppCompatActivity {
 
         // just set viewPager
         springIndicator.setViewPager(viewPager);
-
         imgSuccessBtn = (ImageView) findViewById(R.id.imgSuccessBtn);
 
     }
 
     public void imgSuccessBtnOnClick(View view){
-        imgSuccessBtn.animate().rotationBy(1080).setDuration(3000).setInterpolator(new LinearInterpolator()).start();
+        imgSuccessBtn.animate().rotationBy(10080).setDuration(3000).setInterpolator(new LinearInterpolator()).start();
+        imgSuccessBtn.setImageDrawable(getResources().getDrawable(R.drawable.ic_error));
+        viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
     }
 
     private List<String> getTitles(){
-        return Lists.newArrayList("1", "2", "3", "4","5", "6", "7", "8","9","10");
+        return Lists.newArrayList("1", "2", "3", "4","5", "6", "7", "8", "9");
     }
 
-    private List<Integer> getBgRes(){
-        return Lists.newArrayList(R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4, R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4, R.drawable.bg3, R.drawable.bg4);
+    private List<String> getBgRes(){
+        return Lists.newArrayList(
+                "Do you like chocolate?",
+                "Do you like chinese food?",
+                "Do you have T.V. at home?",
+                "Do you have motorcycle?",
+                "Do you have cycle?",
+                "Do you like ice-cream?",
+                "Do you like ice-cream cake?",
+                "Do you like chocolate cake?",
+                "Do you like banana?"
+                );
     }
 
     @Override

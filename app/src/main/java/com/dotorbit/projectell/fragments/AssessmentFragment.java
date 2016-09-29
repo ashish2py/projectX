@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.dotorbit.projectell.R;
 
@@ -15,13 +16,13 @@ import com.dotorbit.projectell.R;
  */
 public class AssessmentFragment extends Fragment {
 
-    private int bgRes;
-    private ImageView imageView;
+    private String questionData;
+    private TextView txtQuestionTitle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bgRes = getArguments().getInt("data");
+        questionData = getArguments().getString("data");
     }
 
     @Override
@@ -35,6 +36,10 @@ public class AssessmentFragment extends Fragment {
 
 //        content goes here
 //        parse questions and do shit here
+
+        txtQuestionTitle = (TextView) getView().findViewById(R.id.txtQuestionTitle);
+        txtQuestionTitle.setText(questionData);
+
 
     }
 }
