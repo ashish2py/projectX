@@ -22,7 +22,7 @@
         <activity
             android:name=".study.AssessmentActivity"
             android:label="@string/title_activity_assessment"
-            android:theme="@style/ELLAppTheme.NoActionBar"></activity>
+            android:theme="@style/ELLAppTheme.NoActionBarWithTitle"></activity>
     </application>
 
 </manifest>

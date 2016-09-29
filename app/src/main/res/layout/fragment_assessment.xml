@@ -1,29 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2015 chenupt
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
-    <ImageView
-        android:id="@+id/image"
-        android:layout_centerInParent="true"
-        tools:src="@drawable/bg4"
-        android:scaleType="centerCrop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dotorbit.projectell.main.MainActivity"
+    android:orientation="vertical"
+    android:background="@color/colorDarkPurple">
+
+
+    <RelativeLayout
+        android:id="@+id/rllQuestionContainer"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_lightdarkpurple_box_border"
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <TextView
+            style="@style/QuestionTitleTxt"
+            android:fontFamily="sans-serif-thin"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/strDummyQuestion"
+            android:id="@+id/txtQuestionTitle"
+            android:gravity="center"
+             />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:id="@+id/rllQuestionAnswerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_white_box_border">
+
+                    <TextView
+                        style="@style/QuestionAnswerTxt"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/strDummyQuestionAnswer"
+                        android:id="@+id/txtOptionOne"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_white_box_border">
+
+                    <TextView
+                        style="@style/QuestionAnswerTxt"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/strDummyQuestionAnswer"
+                        android:id="@+id/txtOptionTwo"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_white_box_border">
+
+                    <TextView
+                        style="@style/QuestionAnswerTxt"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/strDummyQuestionAnswer"
+                        android:id="@+id/txtOptionThree"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_white_box_border">
+
+                    <TextView
+                        style="@style/QuestionAnswerTxt"
+                        android:fontFamily="sans-serif-thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/strDummyQuestionAnswer"
+                        android:id="@+id/txtOptionFour"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             final String lessonDesc= obj.getJSONObject("node").get("description").toString();
 
             JSONArray lessonNodes = obj.getJSONArray("objects");
-            HashMap<String, String> node_li;
 
             for (int i = 0; i < lessonNodes .length(); i++) {
 

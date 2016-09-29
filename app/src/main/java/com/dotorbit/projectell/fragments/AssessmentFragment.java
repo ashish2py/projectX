@@ -33,7 +33,8 @@ public class AssessmentFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        imageView = (ImageView) getView().findViewById(R.id.image);
-        imageView.setBackgroundResource(bgRes);
+//        content goes here
+//        parse questions and do shit here
+
     }
 }

@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">PROJECT XX-XX</string>
     <string name="dot_dot_text">.....</string>
-    <string name="title_activity_assessment">AssessmentActivity</string>
+    <string name="title_activity_assessment">Assessment</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="strSubmit">OK</string>
+    <string name="strDummyQuestion">Question Goes Here Silently.</string>
+    <string name="strDummyQuestionAnswer">Answer Goes Here.</string>
+
+
 </resources>

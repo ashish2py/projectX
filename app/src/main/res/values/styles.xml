@@ -16,6 +16,8 @@
         <item name="colorAccent">@color/colorLighterPurpleFontColor</item>
     </style>
 
+
+
     <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- window with fullscreen -->
         <item name="android:windowFullscreen">true</item>
@@ -31,7 +33,7 @@
         <item name="android:padding">20dp</item>
     </style>
 
-    <style name="BoxHeaderTitleText">
+    <style name="BoxHeaderTitleTxt">
         <item name="android:gravity">left</item>
         <item name="android:padding">10dp</item>
         <item name="android:textColor">@color/colorWhite</item>
@@ -47,19 +49,19 @@
         <item name="android:padding">10dp</item>
     </style>
 
-    <style name="BoxFlyerContainerFooterText" parent="FullScreenTheme">
+    <style name="BoxFlyerContainerFooterTxt" parent="FullScreenTheme">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
 
-    <style name="BoxFlyerContainerText">
+    <style name="BoxFlyerContainerTxt">
         <item name="android:textSize">30dp</item>
         <item name="android:textColor">@color/colorLighterDarkPurple</item>
     </style>
 
 
-    <style name="BoxContextText">
+    <style name="BoxContextTxt">
         <item name="android:gravity">left</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
@@ -74,9 +76,31 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ELLAppTheme.NoActionBarWithTitle">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="ELLAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="ELLAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="BigSubmitBtn">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">30dp</item>
+    </style>
+
+
+    <style name="QuestionTitleTxt">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="QuestionAnswerTxt">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorLighterDarkPurple</item>
+    </style>
 
 </resources>
