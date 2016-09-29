@@ -37,7 +37,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/box_flyer_container"
+            android:id="@+id/relBoxFlyerContainer"
             style="@style/BoxFlyerContainer"
             android:background="@drawable/bg_white_box_border"
             android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Star Bucks"
+                android:text="@string/dot_dot_text"
                 android:id="@+id/txtAssessmentTitle"
                 android:layout_toRightOf="@+id/icnAssessment"
                 android:layout_centerVertical="true"
@@ -75,7 +75,7 @@
 
 
         <RelativeLayout
-            android:layout_below="@+id/box_flyer_container"
+            android:layout_below="@+id/relBoxFlyerContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="0"
+                    android:text="0 Questions"
                     android:id="@+id/txtQuestionCount"
                     android:layout_weight=".5" />
 
