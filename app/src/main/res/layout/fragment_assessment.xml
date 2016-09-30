@@ -17,23 +17,50 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/bg_lightdarkpurple_box_border"
         android:layout_width="match_parent"
-        android:layout_height="142dp"
+        android:layout_height="180dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
 
+        <ImageView
+            android:visibility="gone"
+            android:src="@drawable/ic_pokeball"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
         <TextView
-            style="@style/QuestionTitleTxt"
+            style="@style/QuestionTitleTxtWithImg"
             android:padding="10dp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="sans-serif-condensed"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="80dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/strDummyQuestion"
             android:id="@+id/txtQuestionTitle"
             android:gravity="center"
-             />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:maxLines = "6"
+            android:scrollbars = "vertical"
+            />
+
+        <ImageView
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_speaker"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/soundAudio"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
 
     </RelativeLayout>
 
@@ -64,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/strYes"
-                        android:id="@+id/txtOptionTwo"
+                        android:id="@+id/txtOptionOne"
                         android:gravity="center"
                         android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
@@ -85,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/strNo"
-                        android:id="@+id/txtOptionThree"
+                        android:id="@+id/txtOptionTwo"
                         android:gravity="center"
                         android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
@@ -107,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/strDummyQuestionAnswer"
-                        android:id="@+id/txtOptionFour"
+                        android:id="@+id/txtOptionThree"
                         android:gravity="center"
                         android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
@@ -115,28 +142,6 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:visibility="gone"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_white_box_border">
-
-                    <TextView
-                        style="@style/QuestionAnswerTxt"
-                        android:fontFamily="sans-serif-thin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/strDummyQuestionAnswer"
-                        android:id="@+id/txtOptionOne"
-                        android:gravity="center"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                </RelativeLayout>
 
 
         </LinearLayout>

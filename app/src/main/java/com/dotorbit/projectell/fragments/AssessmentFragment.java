@@ -3,6 +3,7 @@ package com.dotorbit.projectell.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +53,7 @@ public class AssessmentFragment extends Fragment {
 
         txtQuestionTitle = (TextView) getView().findViewById(R.id.txtQuestionTitle);
         txtQuestionTitle.setText(question .title);
+        txtQuestionTitle.setMovementMethod(new ScrollingMovementMethod());
 
 
     }
