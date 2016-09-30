@@ -22,7 +22,7 @@ import java.util.List;
 public class AssessmentFragment extends Fragment {
 
     private String questionData;
-    private Integer questionId;
+    private String questionId;
     private TextView txtQuestionTitle;
     Question question = new Question();
     List<Question> questionList = new ArrayList<Question>();
@@ -31,7 +31,7 @@ public class AssessmentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        questionId = getArguments().getInt("data");
+        questionId = getArguments().getString("data");
     }
 
     @Override
@@ -45,13 +45,13 @@ public class AssessmentFragment extends Fragment {
 
 //        content goes here
 //        parse questions and do shit here
+        Question _question = new Question();
 
-        questionList  = question.getQuestionList();
-        question = questionList.get(questionId);
-        Log.e("ID ",question.id);
+        question = _question.getQuestionList().get(Integer.valueOf(questionId));
+        Log.e("Question id ", questionId);
 
         txtQuestionTitle = (TextView) getView().findViewById(R.id.txtQuestionTitle);
-        txtQuestionTitle.setText(question .title+question.id);
+        txtQuestionTitle.setText(question .title);
 
 
     }

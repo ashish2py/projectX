@@ -25,6 +25,7 @@
 
         <TextView
             style="@style/QuestionTitleTxt"
+            android:padding="10dp"
             android:fontFamily="sans-serif-thin"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

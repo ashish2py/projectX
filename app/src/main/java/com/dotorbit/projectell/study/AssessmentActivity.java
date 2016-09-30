@@ -1,10 +1,12 @@
 package com.dotorbit.projectell.study;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import github.chenupt.multiplemodel.viewpager.ModelPagerAdapter;
 import github.chenupt.multiplemodel.viewpager.PagerModelManager;
@@ -32,6 +35,8 @@ public class AssessmentActivity extends AppCompatActivity {
     ImageView imgSuccessBtn;
     Question question = new Question();
     List<String> questionIds = new ArrayList<String>();
+    Handler activityHandler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class AssessmentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         PagerModelManager manager = new PagerModelManager();
-        manager.addCommonFragment(AssessmentFragment.class, getBgRes(), getQuestionList());
+        manager.addCommonFragment(AssessmentFragment.class, getQuestionList(), questionIds);
         ModelPagerAdapter adapter = new ModelPagerAdapter(getSupportFragmentManager(), manager);
         viewPager.setAdapter(adapter);
         viewPager.fixScrollSpeed();
@@ -56,10 +61,25 @@ public class AssessmentActivity extends AppCompatActivity {
 
     }
 
+    int[] pokemonImages= {R.drawable.ic_pikachu, R.drawable.ic_zubat, R.drawable.ic_charmander, R.drawable.ic_pokecoin,R.drawable.ic_pikachu, R.drawable.ic_zubat };
+
     public void imgSuccessBtnOnClick(View view){
-        imgSuccessBtn.animate().rotationBy(10080).setDuration(3000).setInterpolator(new LinearInterpolator()).start();
-        imgSuccessBtn.setImageDrawable(getResources().getDrawable(R.drawable.ic_error));
-        viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+        Random random = new Random(System.currentTimeMillis());
+        Log.d("random",random.toString());
+        final int posOfImage = random.nextInt(pokemonImages.length-1);
+
+        imgSuccessBtn.setImageDrawable(getResources().getDrawable(R.drawable.ic_pokeball));
+        imgSuccessBtn.animate().rotationBy(10080).setDuration(2000).setInterpolator(new LinearInterpolator()).start();
+
+        activityHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                imgSuccessBtn.setImageDrawable(getResources().getDrawable(pokemonImages[posOfImage]));
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+            }
+        }, 1000);
+
+
     }
 
     private List<String> getTitles(){
@@ -83,8 +103,11 @@ public class AssessmentActivity extends AppCompatActivity {
 
     private List<String> getQuestionList(){
         questionIds = question.getQuestionIDs();
-        return questionIds;
+        Log.d("Question IDS #####", questionIds.subList(1,10).toString());
+        return question.getQuestionIDs().subList(2,12);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

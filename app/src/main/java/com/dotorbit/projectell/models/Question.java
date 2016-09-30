@@ -56,7 +56,6 @@ public class Question {
                 for ( int q = 0; q < assessmentQuestions.length(); q++){
 
                     JSONObject questionJSON = assessmentQuestions.getJSONObject(q);
-                    Log.e("question id", questionJSON.toString());
                     String id = questionJSON .getJSONObject("node").get("id").toString();
                     String title = questionJSON .getJSONObject("node").get("title").toString();
                     String description = questionJSON .getJSONObject("node").get("description").toString();
@@ -100,7 +99,6 @@ public class Question {
             is.read(buffer);
             is.close();
             json = new String(buffer, "UTF-8");
-            Log.d("Questions ", json);
         } catch (IOException ex) {
             ex.printStackTrace();
             Log.e("ERROR", "Go error ", ex);
