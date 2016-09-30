@@ -61,7 +61,7 @@ public class AssessmentActivity extends AppCompatActivity {
 
     }
 
-    int[] pokemonImages= {R.drawable.ic_pikachu, R.drawable.ic_zubat, R.drawable.ic_charmander, R.drawable.ic_pokecoin,R.drawable.ic_pikachu, R.drawable.ic_zubat };
+    int[] pokemonImages= {R.drawable.ic_pikachu, R.drawable.ic_zubat, R.drawable.ic_charmander, R.drawable.ic_pokecoin, R.drawable.ic_jigglypuff, R.drawable.ic_jigglypuff, R.drawable.ic_zubat };
 
     public void imgSuccessBtnOnClick(View view){
         Random random = new Random(System.currentTimeMillis());
