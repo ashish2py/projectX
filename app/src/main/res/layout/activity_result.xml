@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dotorbit.projectell.study.ResultActivity"
+    android:background="@color/colorDarkPurple"
+    android:paddingTop="10dp">
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        style="@style/BoxFlyerContainer"
+        android:background="@drawable/bg_lightdarkpurple_box_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout">
+
+        <TextView
+            style="@style/ResultTitleTxt"
+            android:fontFamily="sans-serif-thin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/strResultTxt"
+            android:id="@+id/textView2"
+            />
+
+        <TextView
+            style="@style/ResultCommentTxt"
+            android:fontFamily="sans-serif-thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/strResultGreetTxt"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        style="@style/BoxFlyerContainer"
+        android:background="@drawable/bg_lightdarkpurple_box_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3">
+
+            <TextView
+                style="@style/ResultNumberTxt"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/strCountZero"
+                android:id="@+id/txtCorrectCount" />
+
+            <TextView
+                android:layout_below="@id/txtCorrectCount"
+                style="@style/ResultDescTxt"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/strCorrect"
+                android:id="@+id/txtCorrectCountTitle" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3">
+
+            <TextView
+                style="@style/ResultNumberTxt"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/strCountZero"
+                android:id="@+id/txtWrongCount" />
+
+            <TextView
+                android:layout_below="@id/txtWrongCount"
+                style="@style/ResultDescTxt"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/strWrong"
+                android:id="@+id/txtWrongCountTitle" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3">
+
+            <TextView
+                style="@style/ResultNumberTxt"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/strCountZero"
+                android:id="@+id/txtSkippedCount" />
+
+            <TextView
+                android:layout_below="@id/txtSkippedCount"
+                style="@style/ResultDescTxt"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/strSkipped"
+                android:id="@+id/txtSkippedCountTitle" />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

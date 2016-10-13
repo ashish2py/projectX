@@ -44,8 +44,6 @@ public class AssessmentFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        content goes here
-//        parse questions and do shit here
         Question _question = new Question();
 
         question = _question.getQuestionList().get(Integer.valueOf(questionId));

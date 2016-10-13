@@ -11,18 +11,25 @@
         <activity
             android:name=".SplashScreen"
             android:noHistory="true"
-            android:theme="@style/FullScreenTheme">
+            android:theme="@style/FullScreenTheme"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity" />
+        <activity android:name=".main.MainActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".study.AssessmentActivity"
             android:label="@string/title_activity_assessment"
-            android:theme="@style/ELLAppTheme.NoActionBarWithTitle"></activity>
+            android:theme="@style/ELLAppTheme.NoActionBarWithTitle" />
+        <activity android:name=".study.ResultActivity"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>
