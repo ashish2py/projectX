@@ -1,112 +1,91 @@
 package com.dotorbit.projectell.models;
 
-import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 /**
  * Created by Ashish on 29/09/16.
  */
 public class Question {
 
-    public String id;
-    public String title;
-    public String description;
-    public String answer;
-    public String content;
-    public String type;
-    public String score;
-
-    public List<Question> questionList = new ArrayList<Question>();
-    public List<String> questionIDs = new ArrayList<String>();
+    private String id;
+    private ArrayList title;
+    private ArrayList<Integer> answer;
+    private HashMap options;
+    private String type;
+    private int score;
 
 
     public Question(){
         super();
     }
 
-    public Question(String id, String title, String description, String answer, String content, String type, String score){
-        super();
+    public Question(String id, ArrayList title, ArrayList<Integer> answer, HashMap options, String type, int score) {
         this.id = id;
         this.title = title;
-        this.description = description;
         this.answer = answer;
-        this.content = content;
+        this.options = options;
         this.type = type;
-        this.score= score;
+        this.score = score;
     }
 
-
-    public List<Question> getAssessmentQuestion(){
-        try {
-            JSONObject obj = new JSONObject(loadJSONFromAsset());
-
-            JSONArray lessonNodes = obj.getJSONArray("objects");
-
-            for (int i = 0; i < lessonNodes .length(); i++) {
-                JSONObject assessmentJSON = lessonNodes.getJSONObject(i);
-                JSONArray assessmentQuestions = assessmentJSON.getJSONArray("objects");
-                for ( int q = 0; q < assessmentQuestions.length(); q++){
-
-                    JSONObject questionJSON = assessmentQuestions.getJSONObject(q);
-                    String id = questionJSON .getJSONObject("node").get("id").toString();
-                    String title = questionJSON .getJSONObject("node").get("title").toString();
-                    String description = questionJSON .getJSONObject("node").get("description").toString();
-                    String answer = questionJSON .getJSONObject("node").getJSONObject("type").get("answer").toString();
-                    String content= questionJSON .getJSONObject("node").getJSONObject("type").get("content").toString();
-                    String type= questionJSON .getJSONObject("node").getJSONObject("type").get("type").toString();
-                    String score = questionJSON .getJSONObject("node").getJSONObject("type").get("score").toString();
-
-                    // question creation
-                    Question question = new Question(id, title, description, answer, content, type, score);
-                    questionList.add(question);
-                    questionIDs.add(String.valueOf(q));
-                }
-
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public String getId() {
+        return id;
     }
 
-
-    public List<String> getQuestionIDs(){
-        getAssessmentQuestion();
-        return questionIDs;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public List<Question> getQuestionList(){
-        getAssessmentQuestion();
-        return questionList;
+    public ArrayList getTitle() {
+        return title;
     }
 
-
-    public String loadJSONFromAsset() {
-        String json = null;
-        String file = "assets/diagnosis_test.json";
-        try {
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream(file);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            Log.e("ERROR", "Go error ", ex);
-            return null;
-        }
-        return json;
+    public void setTitle(ArrayList title) {
+        this.title = title;
     }
 
+    public ArrayList<Integer> getAnswer() {
+        return answer;
+    }
 
+    public void setAnswer(ArrayList<Integer> answer) {
+        this.answer = answer;
+    }
 
+    public HashMap getOptions() {
+        return options;
+    }
+
+    public void setOptions(HashMap options) {
+        this.options = options;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id='" + id + '\'' +
+                ", title=" + title +
+                ", answer=" + answer +
+                ", options=" + options +
+                ", type='" + type + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }

@@ -44,14 +44,14 @@ public class AssessmentFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Question _question = new Question();
-
-        question = _question.getQuestionList().get(Integer.valueOf(questionId));
-        Log.e("Question id ", questionId);
-
-        txtQuestionTitle = (TextView) getView().findViewById(R.id.txtQuestionTitle);
-        txtQuestionTitle.setText(question .title);
-        txtQuestionTitle.setMovementMethod(new ScrollingMovementMethod());
+//        Question _question = new Question();
+//
+//        question = _question.getQuestionList().get(Integer.valueOf(questionId));
+//        Log.e("Question id ", questionId);
+//
+//        txtQuestionTitle = (TextView) getView().findViewById(R.id.txtQuestionTitle);
+//        txtQuestionTitle.setText(question .title);
+//        txtQuestionTitle.setMovementMethod(new ScrollingMovementMethod());
 
 
     }

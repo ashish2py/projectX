@@ -12,12 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.dotorbit.projectell.R;
 import com.dotorbit.projectell.fragments.AssessmentFragment;
 import com.dotorbit.projectell.main.MainActivity;
-import com.dotorbit.projectell.models.Lesson;
 import com.dotorbit.projectell.models.Question;
+import com.dotorbit.projectell.utils.LessonJsonParsor;
+import com.dotorbit.projectell.utils.Tree;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -42,6 +44,13 @@ public class AssessmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
+
+        try{
+            Tree digLesson = LessonJsonParsor.parseJson("diagnosis_test.json", AssessmentActivity.this);
+
+        }catch (Exception e){
+            Toast.makeText(AssessmentActivity.this,"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }
 
         viewPager = (ScrollerViewPager) findViewById(R.id.view_pager);
         SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
@@ -102,9 +111,14 @@ public class AssessmentActivity extends AppCompatActivity {
 
 
     private List<String> getQuestionList(){
-        questionIds = question.getQuestionIDs();
-        Log.d("Question IDS #####", questionIds.subList(1,10).toString());
-        return question.getQuestionIDs().subList(2,12);
+//        questionIds = question.getQuestionIDs();
+//        Log.d("Question IDS #####", questionIds.subList(1,10).toString());
+//        return question.getQuestionIDs().subList(2,12);
+            ArrayList test = new ArrayList();
+        for(int i=0;i<10;i++){
+            test.add(""+i);
+        }
+        return test;
     }
 
 

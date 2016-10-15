@@ -11,21 +11,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dotorbit.projectell.R;
+import com.dotorbit.projectell.models.Assessment;
 import com.dotorbit.projectell.models.Lesson;
 import com.dotorbit.projectell.study.AssessmentActivity;
+import com.dotorbit.projectell.utils.TreeNode;
 
 import java.util.List;
 
 /**
  * Created by Ashish on 28/09/16.
  */
-public class LessonAdapter extends ArrayAdapter<Lesson> {
+public class LessonAdapter extends ArrayAdapter<TreeNode<Lesson>> {
 
     private final Context context;
     private final int layoutResourceId;
-    private final List<Lesson> LessonData;
+    private final List<TreeNode<Lesson>> LessonData;
 
-    public LessonAdapter(Context context, int layoutResourceId, List<Lesson> LessonData) {
+    public LessonAdapter(Context context, int layoutResourceId, List<TreeNode<Lesson>> LessonData) {
         super(context, layoutResourceId, LessonData);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -46,11 +48,15 @@ public class LessonAdapter extends ArrayAdapter<Lesson> {
             TextView txtQuestionCount = (TextView)row.findViewById(R.id.txtQuestionCount);
             RelativeLayout relBoxFlyerContainer = (RelativeLayout)row.findViewById(R.id.relBoxFlyerContainer);
 
-            Lesson lesson = LessonData.get(position);
-            txtLessonTitle .setText(lesson.title);
-            txtLessonDescription .setText(lesson.description);
-            txtAssessmentTitle .setText(lesson.assessmentName);
-            txtQuestionCount.setText(lesson.assessmentQuestions.toString()+" Questions");
+            TreeNode lessonNode = LessonData.get(position);
+            Lesson lesson = (Lesson) lessonNode.getNode();
+            Assessment assessment = (Assessment) ((TreeNode)lessonNode.getChildrens().get(0)).getNode();
+            int questionCount = ((TreeNode)lessonNode.getChildrens().get(0)).getChildrens().size();
+            txtLessonTitle .setText(lesson.getTitle());
+            txtLessonDescription .setText(lesson.getDescription());
+
+            txtAssessmentTitle .setText(assessment.getTitle());
+            txtQuestionCount.setText(questionCount+" Questions");
             relBoxFlyerContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
