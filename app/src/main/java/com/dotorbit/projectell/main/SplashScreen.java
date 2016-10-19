@@ -1,10 +1,11 @@
-package com.dotorbit.projectell;
+package com.dotorbit.projectell.main;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.dotorbit.projectell.R;
 import com.dotorbit.projectell.main.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
