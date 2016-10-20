@@ -4,6 +4,9 @@ package com.dotorbit.projectell.utils;
  * Created by sunit on 15/10/16.
  */
 
+/**
+ * Class to represent Tree
+ */
 public class Tree {
 
     private TreeNode rootnode;

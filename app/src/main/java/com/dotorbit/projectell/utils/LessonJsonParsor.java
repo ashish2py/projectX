@@ -23,6 +23,13 @@ import java.util.HashMap;
 
 public class LessonJsonParsor {
 
+    /**
+     * Public method to parse Lesson JSON
+     * @param assestsFileName Assets filename of lesson.json
+     * @param context Context of application to read assessts
+     * @return Tree Node of given Lesson
+     * @throws Exception
+     */
     public static Tree parseJson(String assestsFileName, Context context) throws Exception {
 
         JSONObject lessonjson = LessonJsonParsor.parseAssets(assestsFileName, context);
@@ -34,6 +41,13 @@ public class LessonJsonParsor {
 
     }
 
+    /**
+     * Parse Assessment Node
+     * @param assestsFilename Assets filename of lesson.json
+     * @param context Context of application to read assessts
+     * @return Assessment TreeNode with all children set
+     * @throws Exception
+     */
     private static JSONObject parseAssets(String assestsFilename, Context context) throws Exception {
         InputStream assestsfile = context.getResources().getAssets().open(assestsFilename);
         BufferedReader filereader = new BufferedReader(new InputStreamReader(assestsfile));
@@ -49,11 +63,24 @@ public class LessonJsonParsor {
         return new JSONObject(jsondata.toString());
     }
 
+    /**
+     * Get Lesson from JSONObject
+     * @param jsonObject JSONObject
+     * @return Lesson
+     * @throws Exception
+     */
     private static Lesson getLesson(JSONObject jsonObject) throws Exception {
         JSONObject node = jsonObject.getJSONObject("node");
         return new Lesson(node.optString("id"), node.optString("title"), node.optString("description"));
     }
 
+    /**
+     * Get Lesson Children
+     * @param objectarray JSON Object of lesson children
+     * @param lesson Parent Node (Lesson Node)
+     * @return Children of lesson Node
+     * @throws Exception
+     */
     private static ArrayList<TreeNode> getLessonChildren(JSONArray objectarray, TreeNode lesson) throws Exception {
         ArrayList<TreeNode> assessmentNodes = new ArrayList<>();
         for (int i = 0; i < objectarray.length(); i++) {
@@ -71,6 +98,13 @@ public class LessonJsonParsor {
         return assessmentNodes;
     }
 
+    /**
+     * Get Assessment Children
+     * @param objectarray JSONObject of assessment Children
+     * @param assessment Parent Node(Assessment)
+     * @return Children of assessment
+     * @throws Exception
+     */
     private static ArrayList<TreeNode> getAssessmentChildren(JSONArray objectarray, TreeNode assessment) throws Exception {
 
         ArrayList<TreeNode> questionList = new ArrayList<TreeNode>();
@@ -100,6 +134,13 @@ public class LessonJsonParsor {
         return questionList;
     }
 
+    /**
+     * Parse Question Title
+     * @param title String Question title.
+     * @param content Content of the question.
+     * @return ArrayList containing Entry in the title.
+     * @throws Exception
+     */
     private static ArrayList parseTitle(String title, JSONObject content) throws Exception {
         String tmp = title.trim();
         ArrayList titleList = new ArrayList();
@@ -127,6 +168,12 @@ public class LessonJsonParsor {
         return titleList;
     }
 
+    /**
+     * Pares Question Option
+     * @param content content of the question.
+     * @return HasMap with option key and option objects..
+     * @throws Exception
+     */
     private static HashMap parseOptions(JSONObject content) throws Exception {
 
         JSONArray optionsArray = content.getJSONArray("options");

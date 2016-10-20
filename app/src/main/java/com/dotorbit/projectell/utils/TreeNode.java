@@ -6,6 +6,10 @@ import java.util.ArrayList;
  * Created by sunit on 15/10/16.
  */
 
+/**
+ * Class to Represent a TreeNode
+ * @param <Type>
+ */
 public class TreeNode<Type> {
 
     private Type node;
