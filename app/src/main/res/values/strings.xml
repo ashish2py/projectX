@@ -16,6 +16,7 @@
     <string name="strCorrect">Correct</string>
     <string name="strWrong">Wrong</string>
     <string name="strSkipped">Skipped</string>
+    <string name="strProfileGreeting">Hi %1$s!,\nWelcome to EnglishDuniya app.</string>
     <string name="strResultTxt">Yay,\nhere is your report.</string>
     <string name="strResultGreetTxt">Congratulations Ashish, you now have access to the englishduniya app.</string>
 
