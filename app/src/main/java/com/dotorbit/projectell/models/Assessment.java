@@ -5,18 +5,58 @@ package com.dotorbit.projectell.models;
  */
 public class Assessment {
 
-    public String title;
-    public String description;
-    public String type;
-    public String lessonName;
-    public String lessonDescription;
+    private String id;
+    private String title;
+    private String description;
+    private String type;
 
-    public Assessment(String lessonName, String lessonDescription, String title, String description, String type){
+    public Assessment(String id, String title, String description, String type){
         super();
-        this.lessonName = lessonName;
-        this.lessonDescription = lessonDescription;
+        this.id = id;
         this.title = title;
         this.description = description;
         this.type = type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Assessment{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

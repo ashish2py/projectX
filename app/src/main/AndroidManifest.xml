@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dotorbit.projectell">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_notes"
@@ -26,10 +30,15 @@
             android:name=".study.AssessmentActivity"
             android:label="@string/title_activity_assessment"
             android:theme="@style/ELLAppTheme.NoActionBarWithTitle" />
+
         <activity
             android:name=".study.ResultActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".main.ProfileActivity"></activity>
+
+        <receiver android:name=".receivers.NotificationReceiver" >
+        </receiver>
+
     </application>
 
 </manifest>

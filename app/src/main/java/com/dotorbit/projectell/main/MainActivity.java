@@ -1,14 +1,22 @@
 package com.dotorbit.projectell.main;
 
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.dotorbit.projectell.R;
 import com.dotorbit.projectell.adapters.LessonAdapter;
 import com.dotorbit.projectell.models.Assessment;
 import com.dotorbit.projectell.models.Lesson;
+import com.dotorbit.projectell.receivers.NotificationReceiver;
+import com.dotorbit.projectell.utils.LessonJsonParsor;
+import com.dotorbit.projectell.utils.Tree;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,69 +28,37 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-
-    ListView lessonListView;
-    final ArrayList<HashMap<String, String>> lessonAssessmentList = new ArrayList<HashMap<String, String>>();
-    final List<Lesson> lessonList = new ArrayList<Lesson>();
-    Lesson lesson;
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lessonListView = (ListView) findViewById(R.id.lessonListView);
+//        //Set Notification
+//        Intent intent = new Intent(MainActivity.this, NotificationReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+//                MainActivity.this.getApplicationContext(), 234324243, intent, 0);
+//
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+//                5000, 5000 ,pendingIntent);
 
-        try {
-            JSONObject obj = new JSONObject(loadJSONFromAsset());
+        try{
+             Tree digLesson = LessonJsonParsor.parseJson("diagnosis_test.json",MainActivity.this);
 
-            final String lessonTitle = obj.getJSONObject("node").get("title").toString();
-            final String lessonDesc= obj.getJSONObject("node").get("description").toString();
+            //Loop for many
+            ArrayList lessonlist = new ArrayList();
+            lessonlist.add(digLesson.getRootnode());
 
-            JSONArray lessonNodes = obj.getJSONArray("objects");
+            //Set Adapter
+            LessonAdapter lessonAdapter = new LessonAdapter(MainActivity.this, R.layout.item_lesson_resource, lessonlist);
 
-            for (int i = 0; i < lessonNodes .length(); i++) {
+            ((ListView) findViewById(R.id.lessonListView)).setAdapter(lessonAdapter);
 
-                JSONObject assessmentJSON = lessonNodes.getJSONObject(i);
-
-                JSONArray assessmentQuestions = assessmentJSON.getJSONArray("objects");
-                Integer qLength = assessmentQuestions.length();
-
-                String nodeTile = assessmentJSON.getJSONObject("node").get("title").toString();
-                String nodeDesc= assessmentJSON.getJSONObject("node").get("description").toString();
-                String nodeType= assessmentJSON.getJSONObject("node").get("content_type_name").toString();
-
-                lesson = new Lesson(lessonTitle, lessonDesc, nodeTile, nodeDesc, nodeType, qLength );
-                lessonList.add(lesson);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            Toast.makeText(MainActivity.this,"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
         }
-
-
-
-        LessonAdapter lessonAdapter;
-        lessonAdapter = new LessonAdapter(this, R.layout.item_lesson_resource, lessonList);
-        lessonListView.setAdapter(lessonAdapter);
-
-
-    }
-
-    public String loadJSONFromAsset() {
-        String json = null;
-        try {
-            InputStream is = this.getAssets().open("diagnosis_test.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
     }
 
 }

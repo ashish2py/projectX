@@ -12,13 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.dotorbit.projectell.R;
 import com.dotorbit.projectell.fragments.AssessmentFragment;
 import com.dotorbit.projectell.main.MainActivity;
-import com.dotorbit.projectell.models.Lesson;
 import com.dotorbit.projectell.models.Question;
-import com.google.common.collect.Lists;
+import com.dotorbit.projectell.utils.LessonJsonParsor;
+import com.dotorbit.projectell.utils.Tree;
+import com.dotorbit.projectell.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +33,10 @@ import github.chenupt.springindicator.viewpager.ScrollerViewPager;
 
 public class AssessmentActivity extends AppCompatActivity {
 
+    private final int NUMBER_OF_QUESTION = 10;
+
     ScrollerViewPager viewPager;
     ImageView imgSuccessBtn;
-    Question question = new Question();
-    List<String> questionIds = new ArrayList<String>();
     Handler activityHandler = new Handler();
 
 
@@ -42,7 +44,18 @@ public class AssessmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
+        TreeNode assmentNode;
 
+        //Get Assessment Tree Node
+        try{
+            Tree digLesson = LessonJsonParsor.parseJson("diagnosis_test.json", AssessmentActivity.this);
+            assmentNode = (TreeNode) digLesson.getRootnode().getChildrens().get(0);
+
+        }catch (Exception e){
+            Toast.makeText(AssessmentActivity.this,"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+            return;
+        }
+        //Set adapeters
         viewPager = (ScrollerViewPager) findViewById(R.id.view_pager);
         SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
 
@@ -50,7 +63,7 @@ public class AssessmentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         PagerModelManager manager = new PagerModelManager();
-        manager.addCommonFragment(AssessmentFragment.class, getQuestionList(), questionIds);
+        manager.addCommonFragment(AssessmentFragment.class, getQuestionList(assmentNode), getTitles());
         ModelPagerAdapter adapter = new ModelPagerAdapter(getSupportFragmentManager(), manager);
         viewPager.setAdapter(adapter);
         viewPager.fixScrollSpeed();
@@ -82,29 +95,41 @@ public class AssessmentActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Generate List for title based on NUMBER_OF_QUESTION
+     * @return List<String> : number from 1 to NUMBER_OF_QUESTION
+     */
     private List<String> getTitles(){
-        return Lists.newArrayList("1", "2", "3", "4","5", "6", "7", "8", "9");
+        ArrayList<String> titleList = new ArrayList<>();
+        for(int i=1;i<=this.NUMBER_OF_QUESTION;i++){
+            titleList.add(""+i);
+        }
+        return titleList;
     }
 
-    private List<String> getBgRes(){
-        return Lists.newArrayList(
-                "Do you like chocolate?",
-                "Do you like chinese food?",
-                "Do you have T.V. at home?",
-                "Do you have motorcycle?",
-                "Do you have cycle?",
-                "Do you like ice-cream?",
-                "Do you like ice-cream cake?",
-                "Do you like chocolate cake?",
-                "Do you like banana?"
-                );
-    }
+    /**
+     * Get random question list based on NUMBER_OF_QUESTION
+     * @param assessment Assessment TreeNode
+     * @return ArrayList<Question> : Question array list
+     */
+    private ArrayList<String> getQuestionList(TreeNode assessment){
+        ArrayList<String > questionsList = new ArrayList<>();
+        ArrayList assessmentQuestion = assessment.getChildrens();
+        ArrayList<Integer> randNumber = new ArrayList<>();
+        Random randomGenerator = new Random();
+        for(int i=0;i<this.NUMBER_OF_QUESTION;i++){
+            int randIndex = randomGenerator.nextInt(assessmentQuestion.size());
+            //Prevent Duplicate
+            while(randNumber.contains(randIndex)){
+                randIndex = randomGenerator.nextInt(assessmentQuestion.size());
+            }
 
-
-    private List<String> getQuestionList(){
-        questionIds = question.getQuestionIDs();
-        Log.d("Question IDS #####", questionIds.subList(1,10).toString());
-        return question.getQuestionIDs().subList(2,12);
+            //Create Question List
+            Question question = (Question) ((TreeNode)assessmentQuestion.get(randIndex)).getNode();
+            questionsList.add(question.getId());
+            randNumber.add(randIndex);
+        }
+        return questionsList;
     }
 
 
