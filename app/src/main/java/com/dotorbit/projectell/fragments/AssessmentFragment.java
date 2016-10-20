@@ -25,7 +25,9 @@ import com.dotorbit.projectell.utils.Tree;
 import com.dotorbit.projectell.utils.TreeNode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Ashish on 29/09/16.
@@ -64,7 +66,7 @@ public class AssessmentFragment extends Fragment {
             }
         }
 
-
+        //**************** Title*****************
         TextView txtQuestionTitle =(TextView) getView().findViewById(R.id.txtQuestionTitle);
         ImageView imgQuestionTitle = (ImageView) getView().findViewById(R.id.questionImageView);
         ImageView soundQuestionTitle = (ImageView) getView().findViewById(R.id.questionSoundAudio);
@@ -124,7 +126,28 @@ public class AssessmentFragment extends Fragment {
                 txtQuestionTitle.setVisibility(View.VISIBLE);
                 txtQuestionTitle.setText("Cant Get instance");
             }
+
+            //*********************** Optiions *******************
+            HashMap options = question.getOptions();
+
+            TextView optionOne = (TextView) getView().findViewById(R.id.txtOptionOne);
+            TextView optionTwo = (TextView) getView().findViewById(R.id.txtOptionTwo);
+            setQuestionOptionView(optionOne,options,(int)options.keySet().toArray()[0]);
+            setQuestionOptionView(optionTwo,options,(int)options.keySet().toArray()[1]);
+
         }
 
+    }
+
+    private void setQuestionOptionView(TextView view, HashMap option ,int key){
+        if(option.get(key) instanceof String){
+            view.setText((String)option.get(key));
+        }else if(option.get(key) instanceof Image){
+            view.setText(((Image)option.get(key)).getUrl());
+        }else if(option.get(key) instanceof Sound){
+            view.setText(((Sound)option.get(key)).getUrl());
+        }else{
+            view.setText("Error");
+        }
     }
 }

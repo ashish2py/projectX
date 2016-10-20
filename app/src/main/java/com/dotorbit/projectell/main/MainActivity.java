@@ -35,14 +35,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Set Notification
-        Intent intent = new Intent(MainActivity.this, NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                MainActivity.this.getApplicationContext(), 234324243, intent, 0);
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                20000, 20000 ,pendingIntent);
+//        //Set Notification
+//        Intent intent = new Intent(MainActivity.this, NotificationReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+//                MainActivity.this.getApplicationContext(), 234324243, intent, 0);
+//
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+//                20000, 20000 ,pendingIntent);
 
         try{
              Tree digLesson = LessonJsonParsor.parseJson("diagnosis_test.json",MainActivity.this);
