@@ -32,9 +32,13 @@
             android:theme="@style/ELLAppTheme.NoActionBarWithTitle" />
 
         <activity
+            android:label="@string/title_result"
             android:name=".study.ResultActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".main.ProfileActivity"></activity>
+
+        <activity
+            android:label="@string/title_profile"
+            android:name=".main.ProfileActivity"/>
 
         <receiver android:name=".receivers.NotificationReceiver" >
         </receiver>

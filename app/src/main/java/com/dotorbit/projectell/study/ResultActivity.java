@@ -1,14 +1,18 @@
 package com.dotorbit.projectell.study;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.widget.TextView;
 
 import com.dotorbit.projectell.R;
 import com.dotorbit.projectell.models.Question;
 
 import java.util.ArrayList;
+import android.view.View;
+
+import com.dotorbit.projectell.main.ProfileActivity;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -62,6 +66,10 @@ public class ResultActivity extends AppCompatActivity {
         return stats ;
     }
 
+    public void imgNextButtonVew(View view){
+        Intent mainIntent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(mainIntent);
+    }
 }
 
 

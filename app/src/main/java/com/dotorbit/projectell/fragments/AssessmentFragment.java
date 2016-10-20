@@ -7,8 +7,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.method.PasswordTransformationMethod;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,20 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dotorbit.projectell.R;
-import com.dotorbit.projectell.models.Assessment;
 import com.dotorbit.projectell.models.Image;
 import com.dotorbit.projectell.models.Question;
 import com.dotorbit.projectell.models.Sound;
-import com.dotorbit.projectell.study.AssessmentActivity;
 import com.dotorbit.projectell.utils.ImageLoadTask;
-import com.dotorbit.projectell.utils.LessonJsonParsor;
-import com.dotorbit.projectell.utils.Tree;
-import com.dotorbit.projectell.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by Ashish on 29/09/16.
@@ -120,13 +111,16 @@ public class AssessmentFragment extends Fragment {
 
             TextView optionOne = (TextView) getView().findViewById(R.id.txtOptionOne);
             TextView optionTwo = (TextView) getView().findViewById(R.id.txtOptionTwo);
-            setQuestionOptionView(optionOne,options,(int)options.keySet().toArray()[0]);
-            setQuestionOptionView(optionTwo,options,(int)options.keySet().toArray()[1]);
+            ImageView optionOneImage = (ImageView) getView().findViewById(R.id.imgViewOptionOne);
+            ImageView optionTwoImage = (ImageView) getView().findViewById(R.id.imgViewOptionTwo);
+
+            setQuestionOptionView(optionOne,optionOneImage,options,(int)options.keySet().toArray()[0]);
+            setQuestionOptionView(optionTwo,optionTwoImage,options,(int)options.keySet().toArray()[1]);
 
             //Setup event listener
-            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.layoutOptionOne),
+            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.lineLayoutOptionOne),
                                                     optionOne,(int)options.keySet().toArray()[0]);
-            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.layoutOptionTwo),
+            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.lineLayoutOptionTwo),
                     optionTwo,(int)options.keySet().toArray()[1]);
         }
 
@@ -134,19 +128,29 @@ public class AssessmentFragment extends Fragment {
 
     /**
      * Set proper view for options
-     * @param view View of option
+     * @param textView TextView of option
+     * @param imgView ImageView of option
      * @param option Hashmap of options
      * @param key current option key
      */
-    private void setQuestionOptionView(TextView view, HashMap option ,int key){
+    private void setQuestionOptionView(TextView textView, ImageView imgView, HashMap option ,int key){
         if(option.get(key) instanceof String){
-            view.setText((String)option.get(key));
+            textView.setText((String)option.get(key));
+            imgView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
         }else if(option.get(key) instanceof Image){
-            view.setText(((Image)option.get(key)).getUrl());
+            String url = getString(R.string.BACKEND_URL)+((Image)option.get(key)).getUrl();
+            new ImageLoadTask(url,imgView).execute();
+            textView.setVisibility(View.GONE);
+            imgView.setVisibility(View.VISIBLE);
         }else if(option.get(key) instanceof Sound){
-            view.setText(((Sound)option.get(key)).getUrl());
+            textView.setText(((Sound)option.get(key)).getUrl());
+            imgView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
         }else{
-            view.setText("Error");
+            imgView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText("Error");
         }
     }
 

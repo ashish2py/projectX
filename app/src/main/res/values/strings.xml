@@ -2,6 +2,8 @@
     <string name="BACKEND_URL">https://cc-test.zaya.in</string>
 
     <string name="app_name">PROJECT XX-XX</string>
+    <string name="title_result">Result</string>
+    <string name="title_profile">Profile</string>
     <string name="dot_dot_text">.....</string>
 
     <string name="title_activity_assessment">Assessment</string>
@@ -16,6 +18,7 @@
     <string name="strCorrect">Correct</string>
     <string name="strWrong">Wrong</string>
     <string name="strSkipped">Skipped</string>
+    <string name="strProfileGreeting">Hi %1$s!,\nWelcome to EnglishDuniya app.</string>
     <string name="strResultTxt">Yay,\nhere is your report.</string>
     <string name="strResultGreetTxt">Congratulations, you now have access to the englishduniya app.</string>
 
