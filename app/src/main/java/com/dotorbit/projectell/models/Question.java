@@ -1,12 +1,13 @@
 package com.dotorbit.projectell.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by Ashish on 29/09/16.
  */
-public class Question {
+public class Question implements Serializable{
 
     private String id;
     private ArrayList title;
@@ -14,6 +15,7 @@ public class Question {
     private HashMap options;
     private String type;
     private int score;
+    private int selected_option = -1;
 
 
     public Question(){
@@ -77,6 +79,14 @@ public class Question {
         this.score = score;
     }
 
+    public int getSelected_option() {
+        return selected_option;
+    }
+
+    public void setSelected_option(int selected_option) {
+        this.selected_option = selected_option;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
@@ -86,6 +96,7 @@ public class Question {
                 ", options=" + options +
                 ", type='" + type + '\'' +
                 ", score=" + score +
+                ", selectedOption="+selected_option+
                 '}';
     }
 }

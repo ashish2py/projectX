@@ -104,7 +104,9 @@
                     android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:background="@drawable/bg_white_box_border">
+                    android:id="@+id/layoutOptionOne"
+                    android:clickable="true"
+                    android:background="@drawable/option_selector">
 
                     <TextView
                         style="@style/QuestionAnswerTxt"
@@ -125,7 +127,9 @@
                     android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:background="@drawable/bg_white_box_border">
+                    android:id="@+id/layoutOptionTwo"
+                    android:clickable="true"
+                    android:background="@drawable/option_selector">
 
                     <TextView
                         style="@style/QuestionAnswerTxt"

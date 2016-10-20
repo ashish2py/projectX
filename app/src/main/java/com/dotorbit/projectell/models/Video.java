@@ -1,10 +1,12 @@
 package com.dotorbit.projectell.models;
 
+import java.io.Serializable;
+
 /**
  * Created by sunit on 15/10/16.
  */
 
-public class Video {
+public class Video implements Serializable {
 
     private String url;
 

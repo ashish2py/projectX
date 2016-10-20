@@ -1,5 +1,7 @@
 package com.dotorbit.projectell.fragments;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dotorbit.projectell.R;
+import com.dotorbit.projectell.models.Assessment;
 import com.dotorbit.projectell.models.Image;
 import com.dotorbit.projectell.models.Question;
 import com.dotorbit.projectell.models.Sound;
@@ -34,21 +37,13 @@ import java.util.Objects;
  */
 public class AssessmentFragment extends Fragment {
 
-    private String questionId;
-    private List<TreeNode> questionList;
+    private Question question;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        questionId = getArguments().getString("data");
-        try {
-            Tree digLesson = LessonJsonParsor.parseJson("diagnosis_test.json", getActivity().getBaseContext());
-            TreeNode assessment = (TreeNode) digLesson.getRootnode().getChildrens().get(0);
-            this.questionList = assessment.getChildrens();
+        this.question = (Question) getArguments().get("data");
 
-        }catch(Exception e){
-            Log.e("ERROR",e.toString());
-        }
     }
 
     @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,13 +53,6 @@ public class AssessmentFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        Question question = null;
-        for(TreeNode qus : this.questionList){
-            if(((Question)qus.getNode()).getId().equals(this.questionId)){
-                question =  (Question)qus.getNode();
-            }
-        }
 
         //**************** Title*****************
         TextView txtQuestionTitle =(TextView) getView().findViewById(R.id.txtQuestionTitle);
@@ -77,14 +65,14 @@ public class AssessmentFragment extends Fragment {
         soundQuestionTitle.setVisibility(View.GONE);
 
         //ERROR
-        if(question == null){
+        if(this.question == null){
             txtQuestionTitle.setVisibility(View.VISIBLE);
             txtQuestionTitle.setText("Cant Get Question");
             return;
         }
 
         //Parse Title and display
-        ArrayList questionTitle =  question.getTitle();
+        ArrayList questionTitle =  this.question.getTitle();
         for(int i=0;i<questionTitle.size();i++){
             if(questionTitle.get(i) instanceof String){
                 //TEXT
@@ -135,10 +123,21 @@ public class AssessmentFragment extends Fragment {
             setQuestionOptionView(optionOne,options,(int)options.keySet().toArray()[0]);
             setQuestionOptionView(optionTwo,options,(int)options.keySet().toArray()[1]);
 
+            //Setup event listener
+            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.layoutOptionOne),
+                                                    optionOne,(int)options.keySet().toArray()[0]);
+            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.layoutOptionTwo),
+                    optionTwo,(int)options.keySet().toArray()[1]);
         }
 
     }
 
+    /**
+     * Set proper view for options
+     * @param view View of option
+     * @param option Hashmap of options
+     * @param key current option key
+     */
     private void setQuestionOptionView(TextView view, HashMap option ,int key){
         if(option.get(key) instanceof String){
             view.setText((String)option.get(key));
@@ -149,5 +148,37 @@ public class AssessmentFragment extends Fragment {
         }else{
             view.setText("Error");
         }
+    }
+
+    /**
+     * Setup event listener for option layout
+     * @param optionView Layout of option
+     * @param optionTextView Text view of option
+     * @param key current key
+     */
+    private void setOnQuestionOptionClickListener(final View optionView, final TextView optionTextView, final int key){
+
+        //Retain State
+        if(this.question.getSelected_option() == key){
+            optionView.setBackgroundColor(getResources().getColor(R.color.colorLightBlue));
+            optionTextView.setTextColor(Color.WHITE);
+            optionTextView.setTypeface(null,Typeface.BOLD);
+        }
+
+        //Set State change listener
+        optionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(AssessmentFragment.this.question.getSelected_option() == -1){
+
+                    optionView.setBackgroundColor(getResources().getColor(R.color.colorLightBlue));
+                    optionTextView.setTextColor(Color.WHITE);
+                    optionTextView.setTypeface(null,Typeface.BOLD);
+
+                    AssessmentFragment.this.question.setSelected_option(key);
+                }
+            }
+        });
+
     }
 }
