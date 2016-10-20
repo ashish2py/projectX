@@ -137,6 +137,8 @@
     </LinearLayout>
 
     <ImageView
+        android:onClick="imgNextButtonVew"
+        android:clickable="true"
         android:layout_marginTop="40dp"
         android:src="@drawable/ic_right_arrow"
         android:layout_width="50dp"

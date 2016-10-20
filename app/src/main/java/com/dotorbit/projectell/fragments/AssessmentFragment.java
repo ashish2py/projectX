@@ -1,5 +1,6 @@
 package com.dotorbit.projectell.fragments;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dotorbit.projectell.R;
+import com.dotorbit.projectell.main.MainActivity;
 import com.dotorbit.projectell.models.Image;
 import com.dotorbit.projectell.models.Question;
 import com.dotorbit.projectell.models.Sound;
@@ -150,4 +152,5 @@ public class AssessmentFragment extends Fragment {
             view.setText("Error");
         }
     }
+
 }
