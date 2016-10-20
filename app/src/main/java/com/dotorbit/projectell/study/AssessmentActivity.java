@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.dotorbit.projectell.R;
 import com.dotorbit.projectell.fragments.AssessmentFragment;
 import com.dotorbit.projectell.main.MainActivity;
+import com.dotorbit.projectell.main.ProfileActivity;
 import com.dotorbit.projectell.models.Question;
 import com.dotorbit.projectell.utils.LessonJsonParsor;
 import com.dotorbit.projectell.utils.Tree;
@@ -144,11 +145,16 @@ public class AssessmentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, MainActivity.class);
+        if (id == R.id.action_profile) {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }else if(id == R.id.action_result){
+            Intent intent = new Intent(this, ResultActivity.class);
             startActivity(intent);
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
