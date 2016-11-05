@@ -1,4 +1,4 @@
-package com.developerbyweekend.bunker.main;
+package com.developerbyweekend.bunker.accounts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -44,6 +44,15 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
+    <style name="LoginRegistrationContainer" parent="FullScreenTheme">
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+
+
     <style name="BoxFlyerContainerFooter" parent="FullScreenTheme">
         <item name="android:gravity">center</item>
         <item name="android:padding">10dp</item>
@@ -134,6 +143,15 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="EditTextLoginRegistration">
+        <item name="android:textSize">18dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:textColor">@color/colorLighterPurpleFontColor</item>
+        <item name="android:textColorHint">@color/colorLighterDarkPurple</item>
+        <item name="android:background">@color/colorTransparent</item>
     </style>
 
 

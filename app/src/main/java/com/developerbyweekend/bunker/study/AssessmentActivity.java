@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.developerbyweekend.bunker.R;
 import com.developerbyweekend.bunker.fragments.AssessmentFragment;
-import com.developerbyweekend.bunker.main.ProfileActivity;
+import com.developerbyweekend.bunker.accounts.ProfileActivity;
 import com.developerbyweekend.bunker.models.Question;
 import com.developerbyweekend.bunker.utils.LessonJsonParsor;
 import com.developerbyweekend.bunker.utils.Tree;

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.developerbyweekend.bunker">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/ELLAppTheme">
         <activity
-            android:name="com.developerbyweekend.bunker.main.SplashScreen"
+            android:name=".main.SplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme">
@@ -24,25 +24,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.developerbyweekend.bunker.main.MainActivity"
+            android:name=".main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.developerbyweekend.bunker.study.AssessmentActivity"
+            android:name=".study.AssessmentActivity"
             android:label="@string/title_activity_assessment"
             android:theme="@style/ELLAppTheme.NoActionBarWithTitle" />
-
         <activity
+            android:name=".study.ResultActivity"
             android:label="@string/title_result"
-            android:name="com.developerbyweekend.bunker.study.ResultActivity"
             android:screenOrientation="portrait" />
-
         <activity
-            android:label="@string/title_profile"
-            android:name="com.developerbyweekend.bunker.main.ProfileActivity"/>
+            android:name=".accounts.ProfileActivity"
+            android:label="@string/title_profile" />
 
-        <receiver android:name="com.developerbyweekend.bunker.receivers.NotificationReceiver" >
-        </receiver>
+        <receiver android:name=".receivers.NotificationReceiver" />
 
+        <activity android:name=".accounts.RegistrationActivity" android:label="@string/strSignup"/>
+        <activity android:name=".accounts.LoginActivity" android:label="@string/strLogin"></activity>
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.developerbyweekend.bunker.R;
-import com.developerbyweekend.bunker.main.ProfileActivity;
+import com.developerbyweekend.bunker.accounts.ProfileActivity;
 import com.developerbyweekend.bunker.models.Question;
 
 import java.util.ArrayList;
