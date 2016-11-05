@@ -115,7 +115,7 @@
     <style name="QuestionTitleTxtWithImg">
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:background">#801c1028</item>
+        <item name="android:background">@color/colorLightDarkPurple</item>
     </style>
 
     <style name="ResultTitleTxt">

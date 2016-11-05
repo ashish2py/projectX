@@ -1,7 +1,7 @@
 <resources>
     <string name="BACKEND_URL">https://cc-test.zaya.in</string>
 
-    <string name="app_name">Bunker</string>
+    <string name="app_name">bunker</string>
     <string name="title_result">Result</string>
     <string name="title_profile">Profile</string>
     <string name="dot_dot_text">.....</string>

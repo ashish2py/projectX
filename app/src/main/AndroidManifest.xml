@@ -14,7 +14,7 @@
         android:theme="@style/ELLAppTheme">
         <activity
             android:name=".main.SplashScreen"
-            android:noHistory="true"
+            android:noHistory="false"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme">
             <intent-filter>
@@ -40,8 +40,8 @@
 
         <receiver android:name=".receivers.NotificationReceiver" />
 
-        <activity android:name=".accounts.RegistrationActivity" android:label="@string/strSignup"/>
-        <activity android:name=".accounts.LoginActivity" android:label="@string/strLogin"></activity>
-    </application>
+        <activity android:name=".accounts.RegistrationActivity" android:label="@string/strSignup" android:noHistory="false"/>
+        <activity android:name=".accounts.LoginActivity" android:label="@string/strLogin" android:noHistory="false"/>
+z    </application>
 
 </manifest>
