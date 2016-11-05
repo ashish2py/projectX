@@ -1,10 +1,12 @@
 package com.developerbyweekend.bunker.models;
 
+import java.io.Serializable;
+
 /**
  * Created by sunit on 15/10/16.
  */
 
-public class Sound {
+public class Sound implements Serializable{
 
     private String url;
 

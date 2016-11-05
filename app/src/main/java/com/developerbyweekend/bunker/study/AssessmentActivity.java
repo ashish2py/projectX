@@ -39,6 +39,7 @@ public class AssessmentActivity extends AppCompatActivity {
     ImageView imgSuccessBtn;
     Handler activityHandler = new Handler();
 
+    private ArrayList<Question> questionList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,8 @@ public class AssessmentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         PagerModelManager manager = new PagerModelManager();
-        manager.addCommonFragment(AssessmentFragment.class, getQuestionList(assmentNode), getTitles());
+        this.questionList = getQuestionList(assmentNode);
+        manager.addCommonFragment(AssessmentFragment.class, (List) this.questionList, getTitles());
         ModelPagerAdapter adapter = new ModelPagerAdapter(getSupportFragmentManager(), manager);
         viewPager.setAdapter(adapter);
         viewPager.fixScrollSpeed();
@@ -112,8 +114,8 @@ public class AssessmentActivity extends AppCompatActivity {
      * @param assessment Assessment TreeNode
      * @return ArrayList<Question> : Question array list
      */
-    private ArrayList<String> getQuestionList(TreeNode assessment){
-        ArrayList<String > questionsList = new ArrayList<>();
+    private ArrayList<Question> getQuestionList(TreeNode assessment){
+        ArrayList<Question > questionsList = new ArrayList<>();
         ArrayList assessmentQuestion = assessment.getChildrens();
         ArrayList<Integer> randNumber = new ArrayList<>();
         Random randomGenerator = new Random();
@@ -126,7 +128,7 @@ public class AssessmentActivity extends AppCompatActivity {
 
             //Create Question List
             Question question = (Question) ((TreeNode)assessmentQuestion.get(randIndex)).getNode();
-            questionsList.add(question.getId());
+            questionsList.add(question);
             randNumber.add(randIndex);
         }
         return questionsList;
@@ -148,12 +150,12 @@ public class AssessmentActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
             return true;
-        }else if(id == R.id.action_result){
+        }else if(id == R.id.action_result) {
             Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtra(ResultActivity.INTENT_QUESTION_LIST, this.questionList);
             startActivity(intent);
             return true;
         }
-
 
         return super.onOptionsItemSelected(item);
     }

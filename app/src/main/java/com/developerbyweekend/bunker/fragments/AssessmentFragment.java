@@ -1,5 +1,6 @@
 package com.developerbyweekend.bunker.fragments;
-
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.developerbyweekend.bunker.R;
 import com.developerbyweekend.bunker.models.Image;
 import com.developerbyweekend.bunker.models.Question;
@@ -30,21 +30,13 @@ import java.util.List;
  */
 public class AssessmentFragment extends Fragment {
 
-    private String questionId;
-    private List<TreeNode> questionList;
+    private Question question;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        questionId = getArguments().getString("data");
-        try {
-            Tree digLesson = LessonJsonParsor.parseJson("diagnosis_test.json", getActivity().getBaseContext());
-            TreeNode assessment = (TreeNode) digLesson.getRootnode().getChildrens().get(0);
-            this.questionList = assessment.getChildrens();
+        this.question = (Question) getArguments().get("data");
 
-        }catch(Exception e){
-            Log.e("ERROR",e.toString());
-        }
     }
 
     @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,13 +46,6 @@ public class AssessmentFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        Question question = null;
-        for(TreeNode qus : this.questionList){
-            if(((Question)qus.getNode()).getId().equals(this.questionId)){
-                question =  (Question)qus.getNode();
-            }
-        }
 
         //**************** Title*****************
         TextView txtQuestionTitle =(TextView) getView().findViewById(R.id.txtQuestionTitle);
@@ -73,14 +58,14 @@ public class AssessmentFragment extends Fragment {
         soundQuestionTitle.setVisibility(View.GONE);
 
         //ERROR
-        if(question == null){
+        if(this.question == null){
             txtQuestionTitle.setVisibility(View.VISIBLE);
             txtQuestionTitle.setText("Cant Get Question");
             return;
         }
 
         //Parse Title and display
-        ArrayList questionTitle =  question.getTitle();
+        ArrayList questionTitle =  this.question.getTitle();
         for(int i=0;i<questionTitle.size();i++){
             if(questionTitle.get(i) instanceof String){
                 //TEXT
@@ -128,23 +113,78 @@ public class AssessmentFragment extends Fragment {
 
             TextView optionOne = (TextView) getView().findViewById(R.id.txtOptionOne);
             TextView optionTwo = (TextView) getView().findViewById(R.id.txtOptionTwo);
-            setQuestionOptionView(optionOne,options,(int)options.keySet().toArray()[0]);
-            setQuestionOptionView(optionTwo,options,(int)options.keySet().toArray()[1]);
+            ImageView optionOneImage = (ImageView) getView().findViewById(R.id.imgViewOptionOne);
+            ImageView optionTwoImage = (ImageView) getView().findViewById(R.id.imgViewOptionTwo);
 
+            setQuestionOptionView(optionOne,optionOneImage,options,(int)options.keySet().toArray()[0]);
+            setQuestionOptionView(optionTwo,optionTwoImage,options,(int)options.keySet().toArray()[1]);
+
+            //Setup event listener
+            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.lineLayoutOptionOne),
+                                                    optionOne,(int)options.keySet().toArray()[0]);
+            this.setOnQuestionOptionClickListener(getView().findViewById(R.id.lineLayoutOptionTwo),
+                    optionTwo,(int)options.keySet().toArray()[1]);
         }
 
     }
 
-    private void setQuestionOptionView(TextView view, HashMap option ,int key){
+    /**
+     * Set proper view for options
+     * @param textView TextView of option
+     * @param imgView ImageView of option
+     * @param option Hashmap of options
+     * @param key current option key
+     */
+    private void setQuestionOptionView(TextView textView, ImageView imgView, HashMap option ,int key){
         if(option.get(key) instanceof String){
-            view.setText((String)option.get(key));
+            textView.setText((String)option.get(key));
+            imgView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
         }else if(option.get(key) instanceof Image){
-            view.setText(((Image)option.get(key)).getUrl());
+            String url = getString(R.string.BACKEND_URL)+((Image)option.get(key)).getUrl();
+            new ImageLoadTask(url,imgView).execute();
+            textView.setVisibility(View.GONE);
+            imgView.setVisibility(View.VISIBLE);
         }else if(option.get(key) instanceof Sound){
-            view.setText(((Sound)option.get(key)).getUrl());
+            textView.setText(((Sound)option.get(key)).getUrl());
+            imgView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
         }else{
-            view.setText("Error");
+            imgView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText("Error");
         }
     }
 
+    /**
+     * Setup event listener for option layout
+     * @param optionView Layout of option
+     * @param optionTextView Text view of option
+     * @param key current key
+     */
+    private void setOnQuestionOptionClickListener(final View optionView, final TextView optionTextView, final int key){
+
+        //Retain State
+        if(this.question.getSelected_option() == key){
+            optionView.setBackgroundColor(getResources().getColor(R.color.colorLightBlue));
+            optionTextView.setTextColor(Color.WHITE);
+            optionTextView.setTypeface(null,Typeface.BOLD);
+        }
+
+        //Set State change listener
+        optionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(AssessmentFragment.this.question.getSelected_option() == -1){
+
+                    optionView.setBackgroundColor(getResources().getColor(R.color.colorLightBlue));
+                    optionTextView.setTextColor(Color.WHITE);
+                    optionTextView.setTypeface(null,Typeface.BOLD);
+
+                    AssessmentFragment.this.question.setSelected_option(key);
+                }
+            }
+        });
+
+    }
 }
