@@ -25,7 +25,9 @@
         </activity>
         <activity
             android:name=".main.MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/ELLAppTheme" />
+
         <activity
             android:name=".study.AssessmentActivity"
             android:label="@string/title_activity_assessment"
@@ -40,8 +42,17 @@
 
         <receiver android:name=".receivers.NotificationReceiver" />
 
-        <activity android:name=".accounts.RegistrationActivity" android:label="@string/strSignup" android:noHistory="false"/>
-        <activity android:name=".accounts.LoginActivity" android:label="@string/strLogin" android:noHistory="false"/>
-z    </application>
+        <activity
+            android:name=".accounts.RegistrationActivity"
+            android:label="@string/strSignup"
+            android:theme="@style/ELLAppTheme"
+            android:noHistory="true" />
+        <activity
+            android:name=".accounts.LoginActivity"
+            android:label="@string/strLogin"
+            android:noHistory="true"
+            android:theme="@style/ELLAppTheme"/>
+        z
+    </application>
 
 </manifest>
