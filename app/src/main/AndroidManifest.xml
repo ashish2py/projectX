@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dotorbit.projectell">
+    package="com.developerbyweekend.bunker">
 
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/ELLAppTheme">
         <activity
-            android:name=".main.SplashScreen"
+            android:name="com.developerbyweekend.bunker.main.SplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme">
@@ -24,23 +24,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.MainActivity"
+            android:name="com.developerbyweekend.bunker.main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".study.AssessmentActivity"
+            android:name="com.developerbyweekend.bunker.study.AssessmentActivity"
             android:label="@string/title_activity_assessment"
             android:theme="@style/ELLAppTheme.NoActionBarWithTitle" />
 
         <activity
             android:label="@string/title_result"
-            android:name=".study.ResultActivity"
+            android:name="com.developerbyweekend.bunker.study.ResultActivity"
             android:screenOrientation="portrait" />
 
         <activity
             android:label="@string/title_profile"
-            android:name=".main.ProfileActivity"/>
+            android:name="com.developerbyweekend.bunker.main.ProfileActivity"/>
 
-        <receiver android:name=".receivers.NotificationReceiver" >
+        <receiver android:name="com.developerbyweekend.bunker.receivers.NotificationReceiver" >
         </receiver>
 
     </application>

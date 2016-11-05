@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dotorbit.projectell.study.ResultActivity"
+    tools:context="com.developerbyweekend.bunker.study.ResultActivity"
     android:background="@color/colorDarkPurple"
     android:paddingTop="10dp">
 
