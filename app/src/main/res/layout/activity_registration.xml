@@ -31,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
-            android:background="@color/colorLightDarkPurple"
+            android:background="@color/colorLighterDarkPurple"
             android:id="@+id/viewDivider1"
             android:layout_above="@+id/txtLogin"
             android:layout_centerHorizontal="true" />
@@ -61,8 +61,8 @@
             style="@style/EditTextLoginRegistration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="PHONE (OPTIONAL)"
+            android:inputType="textEmailAddress"
+            android:hint="EMAIL (OPTIONAL)"
             android:id="@+id/editContact"
             android:layout_below="@+id/editText2"
             android:layout_centerHorizontal="true" />
@@ -75,12 +75,10 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_height="0.5dp"
         android:background="@color/colorLighterDarkPurple"
         android:id="@+id/viewDivider"
-        android:layout_above="@+id/txtLogin"
+        android:layout_above="@+id/txtRegistrationBtn"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -90,11 +88,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/strSignup"
+        android:text="@string/strBtnSubmit"
         android:id="@+id/txtRegistrationBtn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp" />
-
 
 </RelativeLayout>
