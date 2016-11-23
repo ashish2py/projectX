@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.developerbyweekend.bunker.R;
 import com.developerbyweekend.bunker.accounts.LoginActivity;
 import com.developerbyweekend.bunker.accounts.RegistrationActivity;
+import com.developerbyweekend.bunker.api.APIService;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -19,6 +20,10 @@ public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //init API Service
+        APIService.init(getString(R.string.BACKEND_URL));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 

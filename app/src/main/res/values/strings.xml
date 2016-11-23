@@ -1,5 +1,8 @@
 <resources>
-    <string name="BACKEND_URL">https://cc-test.zaya.in</string>
+    <string name="BACKEND_URL">http://192.168.0.15:8000/api/v1/</string>
+
+    <string name="LOGIN_API">auth/login/</string>
+    <string name="REGISTRATION_API">auth/users/</string>
 
     <string name="app_name">bunker</string>
     <string name="title_result">Result</string>
