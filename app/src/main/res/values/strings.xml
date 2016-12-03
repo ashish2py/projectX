@@ -28,7 +28,7 @@
     <string name="strSignup">SIGNUP FOR FREE</string>
     <string name="strLogin">LOG IN</string>
     <string name="strBtnSubmit">SUBMIT</string>
-
+    <string name="title_activity_attendance">Attendance</string>
 
 
 </resources>

@@ -27,7 +27,6 @@
             android:name=".main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ELLAppTheme" />
-
         <activity
             android:name=".study.AssessmentActivity"
             android:label="@string/title_activity_assessment"
@@ -45,14 +44,18 @@
         <activity
             android:name=".accounts.RegistrationActivity"
             android:label="@string/strSignup"
-            android:theme="@style/ELLAppTheme"
-            android:noHistory="true" />
+            android:noHistory="true"
+            android:theme="@style/ELLAppTheme" />
         <activity
             android:name=".accounts.LoginActivity"
             android:label="@string/strLogin"
             android:noHistory="true"
-            android:theme="@style/ELLAppTheme"/>
-        z
+            android:theme="@style/ELLAppTheme" />
+        <activity
+            android:name=".attendance.AttendanceActivity"
+            android:label="Attendance"
+            android:noHistory="true"
+            android:theme="@style/ELLAppTheme" />
     </application>
 
 </manifest>

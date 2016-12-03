@@ -1,12 +1,15 @@
 package com.developerbyweekend.bunker.models;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.developerbyweekend.bunker.R;
 import com.developerbyweekend.bunker.api.APIService;
 import com.developerbyweekend.bunker.api.Callable;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,7 +19,10 @@ import org.json.JSONObject;
 
 public class User{
 
+    //Preference
+    private static final String PREF_USER = "user";
 
+    //Api parameters
     private static final String API_PARAMETER_USERNAME = "username";
     private static final String API_PARAMETER_ID = "id";
     private static final String API_PARAMETER_PASSWORD = "password";
@@ -160,10 +166,7 @@ public class User{
                 @Override
                 public void onResponse(Object data) {
                     try {
-                        JSONObject response = (JSONObject) data;
-                        token = response.getString(API_PARAMETER_TOKEN);
-                        id = response.getString(API_PARAMETER_ID);
-                        callable.onResponse(this);
+                       parseJson((JSONObject)data);
 
                     }catch (Exception e){
                         callable.onError(e);
@@ -185,9 +188,50 @@ public class User{
     public void update(){
     }
 
-    public void getDetails(){}
+    public void getDetails(Context context, final Callable callable){
+        try {
+            if(this.token == null){
+                callable.onError(new Exception("Token not set."));
+                return;
+            }
+            APIService.list(context, context.getString(R.string.REGISTRATION_API), null, new Callable() {
+                @Override
+                public void onResponse(Object data) {
+                    JSONArray user_array = (JSONArray)data;
+                    if(user_array.length()<1){
+                        callable.onError(new Exception("Bad response from server. Return multiple users."));
+                    }
+                    try {
+                       callable.onResponse(parseJson((JSONObject) user_array.get(0)));
 
+                    }catch (Exception e){
+                        callable.onError(e);
+                    }
+
+                }
+
+                @Override
+                public void onError(Exception error) {
+                    callable.onError(error);
+                }
+            });
+        }catch (Exception e){
+            callable.onError(e);
+        }
+    }
+
+
+    public void saveLocal(Activity activity){
+        String json = this.getJson();
+        SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(PREF_USER,json);
+        editor.commit();
+
+    }
     //******** Utils **************
+
+
 
     protected static User parseLoginJson(JSONObject response){
         try {
@@ -199,6 +243,34 @@ public class User{
             return null;
         }
 
+    }
+
+    protected User parseJson(JSONObject object) throws JSONException{
+
+        this.username = object.getString(User.API_PARAMETER_USERNAME);
+        this.email = object.getString(User.API_PARAMETER_EMAIL);
+        this.deviceId = object.getString(User.API_PARAMETER_DEVICE_ID);
+        this.token = object.getString(User.API_PARAMETER_TOKEN);
+        this.id = object.getString(User.API_PARAMETER_ID);
+        this.type = object.getString(User.API_PARAMETER_TYPE);
+        return this;
+    }
+
+    private String getJson(){
+
+        JSONObject jsonObject= new JSONObject();
+        try {
+            jsonObject.put("token", this.token);
+            jsonObject.put("username", this.username);
+            jsonObject.put("email", this.email);
+            jsonObject.put("type",this.type);
+            jsonObject.put("device_id",this.deviceId);
+
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
 }
