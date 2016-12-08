@@ -29,7 +29,7 @@
 
 
         <ImageView
-            android:src="@drawable/ic_turtle"
+            android:src="@drawable/ic_butterfly"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginBottom="60dp"
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/strCheckIn"
+            android:text="@string/strCheckOut"
             />
 
 

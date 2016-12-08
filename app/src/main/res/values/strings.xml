@@ -29,6 +29,10 @@
     <string name="strLogin">LOG IN</string>
     <string name="strBtnSubmit">SUBMIT</string>
     <string name="title_activity_attendance">Attendance</string>
+    <string name="strCheckIn">Check In</string>
+    <string name="strCheckOut">Check Out</string>
+
+
 
 
 </resources>

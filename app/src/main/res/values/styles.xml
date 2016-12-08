@@ -123,6 +123,14 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+
+    <style name="CheckInOutTxt">
+        <item name="android:textSize">30dp</item>
+        <item name="android:padding">40dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+
     <style name="ResultCommentTxt">
         <item name="android:textSize">20dp</item>
         <item name="android:paddingLeft">30dp</item>
