@@ -39,8 +39,6 @@
             android:name=".accounts.ProfileActivity"
             android:label="@string/title_profile" />
 
-        <receiver android:name=".receivers.NotificationReceiver" />
-
         <activity
             android:name=".accounts.RegistrationActivity"
             android:label="@string/strSignup"

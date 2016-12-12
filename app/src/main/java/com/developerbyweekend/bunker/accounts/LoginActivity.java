@@ -12,6 +12,7 @@ import com.developerbyweekend.bunker.api.Callable;
 import com.developerbyweekend.bunker.attendance.AttendanceActivity;
 import com.developerbyweekend.bunker.models.User;
 
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -28,9 +29,21 @@ public class LoginActivity extends AppCompatActivity {
                 User.login(getApplicationContext(), username, password, new Callable() {
                     @Override
                     public void onResponse(Object data) {
-                        ((User)data).saveLocal(LoginActivity.this);
-                        Intent myIntent = new Intent(LoginActivity.this, AttendanceActivity.class);
-                        LoginActivity.this.startActivity(myIntent);
+                        User user = (User)data;
+                        user.getDetails(LoginActivity.this, new Callable() {
+                            @Override
+                            public void onResponse(Object data) {
+                                User user = (User) data;
+                                user.saveLocal(LoginActivity.this);
+                                Intent myIntent = new Intent(LoginActivity.this, AttendanceActivity.class);
+                                LoginActivity.this.startActivity(myIntent);
+                            }
+
+                            @Override
+                            public void onError(Exception error) {
+                                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
 
                     @Override

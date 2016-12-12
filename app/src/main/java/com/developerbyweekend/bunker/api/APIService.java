@@ -58,10 +58,11 @@ public class APIService {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 if(headers == null)
-                    return new HashMap<String, String>();
+                     new HashMap<String, String>();
                 return headers;
             }
         };
+        APIService.getRequestQueue(context).add(request);
     }
 
     public static void list(Context context, String api, final Map<String,String> headers, final Callable callable){
@@ -87,10 +88,11 @@ public class APIService {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 if(headers == null)
-                    return new HashMap<String, String>();
+                    new HashMap<String, String>();
                 return headers;
             }
         };
+        APIService.getRequestQueue(context).add(request);
     }
 
     public static void post(Context context,String api, JSONObject body, final Callable callable){
@@ -114,11 +116,11 @@ public class APIService {
         APIService.getRequestQueue(context).add(request);
     }
     
-    public static void patch(Context context,String api, JSONObject object,Callable callable{
+    public static void patch(Context context,String api, JSONObject object,Callable callable){
         //Todo
     }
 
-    public static void delete(Context context,String api,Callable callable{
+    public static void delete(Context context,String api,Callable callable){
         //Todo
     }
 }
