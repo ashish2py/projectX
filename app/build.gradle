@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 22
     buildToolsVersion "24.0.0"
-
     defaultConfig {
         applicationId "com.dotorbit.projectell"
         minSdkVersion 16
@@ -28,5 +27,7 @@ dependencies {
     compile 'com.github.chenupt.android:multiplemodel:1.1.0@aar'
     compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
     compile 'com.android.volley:volley:1.0.0'
+    compile 'com.google.android.gms:play-services:7.8.0'
+
 
 }

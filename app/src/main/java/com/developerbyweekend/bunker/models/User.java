@@ -4,7 +4,6 @@ package com.developerbyweekend.bunker.models;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.developerbyweekend.bunker.R;
 import com.developerbyweekend.bunker.api.APIService;
@@ -15,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Created by sunit on 19/11/16.
