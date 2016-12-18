@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 /**
  * Created by sunit on 19/11/16.
  */
@@ -32,6 +34,7 @@ public class User{
     private static final String API_PARAMETER_DEVICE_ID = "device_id";
     private static final String API_PARAMETER_EMAIL = "email";
     private static final String API_PARAMETER_TOKEN= "token";
+    private static final String API_HEADER_AUTHORIZATION = "Authorization";
 
     private String id;
     private String username;
@@ -158,19 +161,20 @@ public class User{
             body.put(API_PARAMETER_USERNAME,this.username);
             body.put(API_PARAMETER_PASSWORD1,this.password);
             body.put(API_PARAMETER_PASSWORD2,this.password);
-            body.put(API_PARAMETER_EMAIL,this.email);
+            if(this.email!=null && !this.email.equals("")) {
+                body.put(API_PARAMETER_EMAIL, this.email);
+            }
             body.put(API_PARAMETER_DEVICE_ID,this.deviceId);
             body.put(API_PARAMETER_TYPE,this.type);
 
             APIService.post(context, context.getString(R.string.REGISTRATION_API), body, new Callable() {
                 @Override
                 public void onResponse(Object data) {
-                    try {
-                       parseJson((JSONObject)data);
-
-                    }catch (Exception e){
-                        callable.onError(e);
-                    }
+                   try {
+                       callable.onResponse(parseJson((JSONObject)data));
+                   }catch (Exception e){
+                       callable.onError(e);
+                   }
                 }
 
                 @Override
@@ -189,12 +193,18 @@ public class User{
     }
 
     public void getDetails(Context context, final Callable callable){
+
         try {
             if(this.token == null){
                 callable.onError(new Exception("Token not set."));
                 return;
             }
-            APIService.list(context, context.getString(R.string.REGISTRATION_API), null, new Callable() {
+
+            //Headers
+            HashMap<String,String> headers = new HashMap<String,String>();
+            headers.put(User.API_HEADER_AUTHORIZATION,"Token "+this.token);
+
+            APIService.list(context, context.getString(R.string.REGISTRATION_API), headers, new Callable() {
                 @Override
                 public void onResponse(Object data) {
                     JSONArray user_array = (JSONArray)data;
@@ -223,12 +233,27 @@ public class User{
 
     public void saveLocal(Activity activity){
         String json = this.getJson();
-        SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = activity.getSharedPreferences(User.PREF_USER,0);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(PREF_USER,json);
-        editor.commit();
+        editor.apply();
+    }
+
+
+    public static User getUserFromLocal(Activity activity){
+        SharedPreferences pref = activity.getSharedPreferences(User.PREF_USER,0);
+        String userString = pref.getString(User.PREF_USER,"");
+        if(userString.equals("")){
+            return null;
+        }
+        try {
+            return parseLoginJson(new JSONObject(userString));
+        }catch (JSONException e){
+            return  null;
+        }
 
     }
+
     //******** Utils **************
 
 
@@ -247,13 +272,14 @@ public class User{
 
     protected User parseJson(JSONObject object) throws JSONException{
 
-        this.username = object.getString(User.API_PARAMETER_USERNAME);
-        this.email = object.getString(User.API_PARAMETER_EMAIL);
-        this.deviceId = object.getString(User.API_PARAMETER_DEVICE_ID);
-        this.token = object.getString(User.API_PARAMETER_TOKEN);
-        this.id = object.getString(User.API_PARAMETER_ID);
-        this.type = object.getString(User.API_PARAMETER_TYPE);
-        return this;
+        User user = new User();
+        user.username = object.getString(User.API_PARAMETER_USERNAME);
+        user.email = object.getString(User.API_PARAMETER_EMAIL);
+        user.deviceId = object.getString(User.API_PARAMETER_DEVICE_ID);
+        user.token = object.getString(User.API_PARAMETER_TOKEN);
+        user.id = object.getString(User.API_PARAMETER_ID);
+        user.type = object.getString(User.API_PARAMETER_TYPE);
+        return user;
     }
 
     private String getJson(){

@@ -25,18 +25,23 @@
         android:background="@drawable/bg_lightdarkpurple_box_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:id="@+id/relativeLayout">
+        android:id="@+id/relativeLayout"
+        android:weightSum="1">
 
 
+        <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/viewCamera"
+            android:layout_gravity="center_horizontal"/>
 
-        <ImageView
-            android:src="@drawable/ic_turtle"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginBottom="60dp"
-            android:id="@+id/imageView3"
-            android:layout_gravity="center_horizontal" />
+        <!--<ImageView-->
+            <!--android:src="@drawable/ic_turtle"-->
+            <!--android:layout_width="140dp"-->
+            <!--android:layout_height="140dp"-->
+            <!--android:layout_marginBottom="60dp"-->
+            <!--android:id="@+id/imageView3"-->
+            <!--android:layout_gravity="center_horizontal" />-->
 
         <View
             android:layout_width="match_parent"
