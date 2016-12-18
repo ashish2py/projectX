@@ -17,6 +17,8 @@
 
 
     <LinearLayout
+        android:clickable="true"
+        android:onClick="checkOutContainer"
         android:layout_marginTop="30dp"
         android:orientation="vertical"
         style="@style/BoxFlyerContainer"
